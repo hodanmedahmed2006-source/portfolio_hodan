@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortFolio | Hodan Mohamed – Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chatbot.css">
+    <style>
+        /* Additional styles for home page */
+        body { padding-top: 0 !important; }
+        
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.4) !important;
+            box-shadow: none !important;
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled {
+            background-color: rgba(44, 62, 80, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            color: white !important;
+            background: none !important;
+            -webkit-text-fill-color: white !important;
+        }
+        .nav-link { color: rgba(255,255,255,0.85) !important; }
+        .nav-link:hover, .nav-link.active { color: #f0c89a !important; }
+        
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .hero img.hero-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            animation: zoomSlow 20s ease-out;
+        }
+        @keyframes zoomSlow {
+            from { transform: scale(1.1); }
+            to { transform: scale(1); }
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #f0c89a;
+            animation: fadeInDown 1s ease-out;
+            margin-bottom: 1rem;
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Container for animated text under name */
+        .animated-subtitle-container {
+            min-height: 60px;
+            margin-top: 0.5rem;
+        }
+        
+        #animated-subtitle {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: white;
+            letter-spacing: 1px;
+            display: inline-block;
+            border-right: 2px solid #f0c89a;
+            padding-right: 8px;
+            white-space: nowrap;
+        }
+        
+        .cursor-blink {
+            animation: blink 0.9s infinite;
+            color: #f0c89a;
+            font-size: 1.3rem;
+            font-weight: 400;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .hero .btn-outline-custom {
+            animation: fadeInUp 1s ease-out 0.5s both;
+            border-color: #f0c89a;
+            color: #f0c89a;
+            transition: all 0.3s;
+        }
+        .hero .btn-outline-custom:hover {
+            background-color: #f0c89a;
+            color: #2c3e50;
+            transform: translateY(-3px);
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Skills section */
+        .skill-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .skill-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .skill-icon {
+            font-size: 2.5rem;
+            color: #c17f59;
+            margin-bottom: 1rem;
+            transition: transform 0.3s;
+        }
+        .skill-card:hover .skill-icon {
+            transform: rotate(360deg) scale(1.1);
+        }
+        
+        /* Projects section */
+        .project-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .project-img {
+            height: 200px;
+            background: linear-gradient(135deg, #e8c9b5, #c17f59);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            transition: transform 0.5s;
+        }
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+        
+        /* Statistics section */
+        .stat-card {
+            background: linear-gradient(135deg, #c17f59, #a05e3a);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            transition: all 0.3s;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+        
+        /* Quick contact section */
+        .contact-preview {
+            background: linear-gradient(135deg, #2c3e50, #1a252f);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            text-align: center;
+            color: white;
+        }
+        .contact-preview .btn-outline-custom {
+            border-color: #f0c89a;
+            color: #f0c89a;
+        }
+        .contact-preview .btn-outline-custom:hover {
+            background: #f0c89a;
+            color: #2c3e50;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            #animated-subtitle { font-size: 0.9rem; white-space: normal; }
+            .cursor-blink { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">PORTFolio<span style="color: #f0c89a;">.</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMain">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+                <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
+                <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+            <form class="d-flex search-form" role="search">
+                <input class="form-control me-1" type="search" placeholder="Search">
+                <button class="btn" type="submit"><i class="bi bi-search"></i></button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <img src="photo.jpg" class="hero-bg" alt="Hodan Mohamed">
+    <div class="hero-overlay">
+        <div>
+            <h1>Hodan Mohamed</h1>
+            <!-- Animated text appears right under the name -->
+            <div class="animated-subtitle-container">
+                <span id="animated-subtitle"></span><span class="cursor-blink">|</span>
+            </div>
+            <a href="portfolio.html" class="btn btn-outline-custom mt-4">View my work <i class="bi bi-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section class="container py-5">
+    <h2 class="section-title text-center">Core Skills</h2>
+    <p class="text-center text-muted mb-5">What I bring to the table</p>
+    <div class="row g-4">
+        <div class="col-md-3 col-sm-6">
+            <div class="skill-card">
+                <i class="bi bi-code-slash skill-icon"></i>
+                <h5>Web Development</h5>
+                <p class="small text-muted">HTML, CSS, JS, Bootstrap</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="skill-card">
+                <i class="bi bi-database skill-icon"></i>
+                <h5>Programming</h5>
+                <p class="small text-muted">Python, C, C++</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="skill-card">
+                <i class="bi bi-brush skill-icon"></i>
+                <h5>UI/UX Design</h5>
+                <p class="small text-muted">Creative & Responsive</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="skill-card">
+                <i class="bi bi-git skill-icon"></i>
+                <h5>Version Control</h5>
+                <p class="small text-muted">Git & GitHub</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Recent Projects Section -->
+<section class="container py-5">
+    <h2 class="section-title text-center">Recent Projects</h2>
+    <p class="text-center text-muted mb-5">Some of my work</p>
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="project-card">
+                <div class="project-img">
+                    <i class="bi bi-controller"></i>
+                </div>
+                <div class="p-4">
+                    <h4>Glino Game</h4>
+                    <p>A C++ game built with Object-Oriented Programming — multiple classes with .hpp/.cpp files.</p>
+                    <a href="https://github.com/hodanmedahmed2006-source/Projet-informatique-hodan" target="_blank" class="btn btn-outline-custom btn-sm">
+                        <i class="bi bi-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="project-card">
+                <div class="project-img">
+                    <i class="bi bi-laptop"></i>
+                </div>
+                <div class="p-4">
+                    <h4>Portfolio Website</h4>
+                    <p>Fully responsive multi-page portfolio using HTML, CSS, Bootstrap and JavaScript.</p>
+                    <a href="portfolio.html" class="btn btn-outline-custom btn-sm">
+                        <i class="bi bi-eye"></i> View Project
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Statistics Section -->
+<section class="container py-5">
+    <div class="row g-4">
+        <div class="col-md-3 col-sm-6">
+            <div class="stat-card">
+                <div class="stat-number counter" data-target="3">0</div>
+                <p>Projects Completed</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="stat-card">
+                <div class="stat-number counter" data-target="10">0</div>
+                <p>Technical Skills</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="stat-card">
+                <div class="stat-number counter" data-target="4">0</div>
+                <p>Languages</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="stat-card">
+                <div class="stat-number counter" data-target="2">0</div>
+                <p>Years Experience</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Contact Section -->
+<section class="container py-5">
+    <div class="contact-preview">
+        <h3 class="mb-3">Let's Work Together!</h3>
+        <p class="mb-4">Have a project in mind? Feel free to reach out!</p>
+        <a href="contact.html" class="btn btn-outline-custom">Get in Touch <i class="bi bi-envelope"></i></a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p class="mb-0">© 2026 PortFolio — Hodan Mohamed | Computer Engineering & Creativity</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+<script src="chatbot.js"></script>
+<script src="scroll-animations.js"></script>
+
+<script>
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('mainNavbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// Counter animation
+function initCounterAnimation() {
+    const counters = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = parseInt(counter.getAttribute('data-target'));
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.floor(current);
+                    }
+                }, 30);
+                counterObserver.unobserve(counter);
+            }
+        });
+    }, { threshold: 0.5 });
+    counters.forEach(counter => counterObserver.observe(counter));
+}
+
+// Animated text under name - appears, erases, and reappears in a loop
+document.addEventListener('DOMContentLoaded', () => {
+    initCounterAnimation();
+    
+    // List of titles that will cycle under the name
+    const titles = [
+        "⚡ Computer Engineering",
+        "💡 Creative Thinker", 
+        "🌐 Web Developer"
+    ];
+    
+    let titleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const subtitleElement = document.getElementById('animated-subtitle');
+    
+    function typeEffect() {
+        const currentTitle = titles[titleIndex];
+        
+        if (isDeleting) {
+            // Erase characters one by one
+            subtitleElement.textContent = currentTitle.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            // Write characters one by one
+            subtitleElement.textContent = currentTitle.substring(0, charIndex + 1);
+            charIndex++;
+        }
+        
+        // When title is fully written
+        if (!isDeleting && charIndex === currentTitle.length) {
+            isDeleting = true;
+            setTimeout(typeEffect, 2000); // Pause 2 seconds before erasing
+            return;
+        }
+        
+        // When title is fully erased
+        if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            titleIndex = (titleIndex + 1) % titles.length; // Move to next title
+            setTimeout(typeEffect, 300); // Short pause before writing next
+            return;
+        }
+        
+        // Writing speed (slower) and erasing speed (faster)
+        const speed = isDeleting ? 40 : 100;
+        setTimeout(typeEffect, speed);
+    }
+    
+    // Start the animation after a short delay
+    setTimeout(typeEffect, 500);
+});
+</script>
+<script>
+// ============================================
+// RECHERCHE DE PAGES - TAPEZ LE NOM D'UNE PAGE
+// ============================================
+
+function initPageSearch() {
+    const searchInput = document.querySelector('.search-form input');
+    const searchButton = document.querySelector('.search-form button');
+    
+    if (!searchInput) return;
+    
+    // Liste des pages du site
+    const pages = [
+        { name: "home", url: "index.html", aliases: ["accueil", "main", "index"] },
+        { name: "about", url: "about.html", aliases: ["apropos", "à propos", "qui", "who"] },
+        { name: "portfolio", url: "portfolio.html", aliases: ["projets", "projects", "travaux", "work"] },
+        { name: "resume", url: "resume.html", aliases: ["cv", "curriculum", "parcours"] },
+        { name: "skills", url: "skills.html", aliases: ["compétences", "competences", "techniques"] },
+        { name: "contact", url: "contact.html", aliases: ["me contacter", "email", "joindre"] }
+    ];
+    
+    function goToPage(searchTerm) {
+        const term = searchTerm.toLowerCase().trim();
+        if (term === "") return false;
+        
+        // Chercher la page correspondante
+        for (let page of pages) {
+            // Vérifier le nom exact
+            if (page.name === term) {
+                window.location.href = page.url;
+                return true;
+            }
+            // Vérifier les alias
+            for (let alias of page.aliases) {
+                if (term === alias || term.includes(alias)) {
+                    window.location.href = page.url;
+                    return true;
+                }
+            }
+            // Vérifier si le terme est contenu dans le nom
+            if (page.name.includes(term)) {
+                window.location.href = page.url;
+                return true;
+            }
+        }
+        
+        // Si rien n'est trouvé
+        alert(`❌ Page "${searchTerm}" non trouvée.\n\n📄 Pages disponibles :\n- Home\n- About\n- Portfolio\n- Resume\n- Skills\n- Contact`);
+        return false;
+    }
+    
+    // Recherche au clic sur le bouton
+    if (searchButton) {
+        searchButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            goToPage(searchInput.value);
+        });
+    }
+    
+    // Recherche en appuyant sur Entrée
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            goToPage(searchInput.value);
+        }
+    });
+}
+
+// Démarrer la recherche
+document.addEventListener('DOMContentLoaded', initPageSearch);
+</script>
+
+</body>
+</html>

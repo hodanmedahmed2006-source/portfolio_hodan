@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe | Portfolio Structure</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #1a1a2e;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            padding: 30px;
+        }
+        
+        .wireframe-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .page {
+            background: #f5f5f5;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        .page-header {
+            background: #2c3e50;
+            color: white;
+            padding: 12px 20px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .page-header span:first-child {
+            background: #b46f3c;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .page-content {
+            padding: 25px;
+        }
+        
+        /* Styles wireframe */
+        .wireframe-nav {
+            background: #2c3e50;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 3px solid #b46f3c;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+        }
+        
+        .logo span {
+            color: #f0c89a;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .nav-links a.active {
+            color: #f0c89a;
+        }
+        
+        .search-box {
+            background: rgba(255,255,255,0.1);
+            padding: 6px 12px;
+            border-radius: 30px;
+            color: white;
+            font-size: 0.8rem;
+        }
+        
+        /* Hero section */
+        .hero-wire {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .hero-wire::after {
+            content: "🖼️ HERO BANNER (photo.jpg)";
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+            font-size: 0.7rem;
+            background: rgba(0,0,0,0.5);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .card-wire {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px dashed #ccc;
+        }
+        
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .card-title {
+            font-weight: 700;
+            margin: 10px 0 5px;
+        }
+        
+        .card-desc {
+            font-size: 0.7rem;
+            color: #888;
+        }
+        
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .stat-wire {
+            background: linear-gradient(135deg, #c17f59, #a05e3a);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+        
+        /* Two columns layout */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 25px 0;
+        }
+        
+        .column-wire {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px dashed #ccc;
+        }
+        
+        .column-title {
+            font-weight: 700;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #b46f3c;
+            display: inline-block;
+        }
+        
+        .list-wire {
+            list-style: none;
+        }
+        
+        .list-wire li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.85rem;
+        }
+        
+        /* Footer */
+        .footer-wire {
+            background: #1e1e2a;
+            color: #aaa;
+            text-align: center;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 25px;
+        }
+        
+        .section-title-wire {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 30px 0 20px;
+            position: relative;
+        }
+        
+        .section-title-wire::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background: #b46f3c;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        hr {
+            margin: 30px 0;
+            border-color: #ddd;
+        }
+        
+        .badge-page {
+            display: inline-block;
+            background: #b46f3c;
+            color: white;
+            padding: 2px 10px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            .two-columns { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav-links { gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="wireframe-container">
+        <h1 style="color: white; text-align: center; margin-bottom: 30px;">📐 Portfolio Wireframe - Hodan Mohamed</h1>
+        
+        <!-- ============================================ -->
+        <!-- PAGE HOME (index.html) -->
+        <!-- ============================================ -->
+        <div class="page">
+            <div class="page-header">
+                <span>📄 PAGE 1</span>
+                <span>🏠 HOME (index.html)</span>
+            </div>
+            <div class="page-content">
+                <!-- Navigation -->
+                <div class="wireframe-nav">
+                    <div class="logo">PORTFolio<span>.</span></div>
+                    <div class="nav-links">
+                        <a href="#" class="active">Home</a>
+                        <a href="#">About</a>
+                        <a href="#">Portfolio</a>
+                        <a href="#">Resume</a>
+                        <a href="#">Skills</a>
+                        <a href="#">Contact</a>
+                    </div>
+                    <div class="search-box">🔍 Search</div>
+                </div>
+                
+                <!-- Hero -->
+                <div class="hero-wire">
+                    <div>
+                        <div style="font-size: 2rem; font-weight: 700;">HODAN MOHAMED</div>
+                        <div style="color: #f0c89a; margin: 10px 0;">✨ Computer Engineering Student ✨</div>
+                        <div style="margin-top: 15px;">
+                            <span style="border: 1px solid #f0c89a; padding: 8px 25px; border-radius: 40px; display: inline-block;">View my work →</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Core Skills -->
+                <div class="section-title-wire">Core Skills</div>
+                <div class="cards-grid">
+                    <div class="card-wire"><div class="card-icon">💻</div><div class="card-title">Web Development</div><div class="card-desc">HTML, CSS, JS, Bootstrap</div></div>
+                    <div class="card-wire"><div class="card-icon">🗄️</div><div class="card-title">Programming</div><div class="card-desc">Python, C, C++</div></div>
+                    <div class="card-wire"><div class="card-icon">🎨</div><div class="card-title">UI/UX Design</div><div class="card-desc">Creative & Responsive</div></div>
+                    <div class="card-wire"><div class="card-icon">🔧</div><div class="card-title">Version Control</div><div class="card-desc">Git & GitHub</div></div>
+                </div>
+                
+                <!-- Recent Projects -->
+                <div class="section-title-wire">Recent Projects</div>
+                <div class="cards-grid">
+                    <div class="card-wire"><div class="card-icon">🎮</div><div class="card-title">Glino Game</div><div class="card-desc">C++ game with OOP</div><div style="margin-top: 8px;"><span style="font-size:0.7rem;color:#b46f3c;">🔗 GitHub</span></div></div>
+                    <div class="card-wire"><div class="card-icon">💻</div><div class="card-title">Portfolio Website</div><div class="card-desc">Responsive multi-page</div><div style="margin-top: 8px;"><span style="font-size:0.7rem;color:#b46f3c;">👁️ View Project</span></div></div>
+                </div>
+                
+                <!-- Statistics -->
+                <div class="stats-grid">
+                    <div class="stat-wire"><div class="stat-number">3</div><div>Projects Completed</div></div>
+                    <div class="stat-wire"><div class="stat-number">10</div><div>Technical Skills</div></div>
+                    <div class="stat-wire"><div class="stat-number">4</div><div>Languages</div></div>
+                    <div class="stat-wire"><div class="stat-number">2</div><div>Years Experience</div></div>
+                </div>
+                
+                <!-- Contact Preview -->
+                <div style="background: linear-gradient(135deg, #2c3e50, #1a252f); border-radius: 20px; padding: 40px; text-align: center; color: white;">
+                    <h3>Let's Work Together!</h3>
+                    <p>Have a project in mind? Feel free to reach out!</p>
+                    <span style="border: 1px solid #f0c89a; padding: 8px 25px; border-radius: 40px; display: inline-block;">Get in Touch 📧</span>
+                </div>
+                
+                <!-- Footer -->
+                <div class="footer-wire">© 2026 PortFolio — Hodan Mohamed | Computer Engineering & Creativity</div>
+            </div>
+        </div>
+        
+        <!-- ============================================ -->
+        <!-- PAGE ABOUT (about.html) -->
+        <!-- ============================================ -->
+        <div class="page">
+            <div class="page-header">
+                <span>📄 PAGE 2</span>
+                <span>👤 ABOUT (about.html)</span>
+            </div>
+            <div class="page-content">
+                <div class="wireframe-nav">
+                    <div class="logo">PORTFolio<span>.</span></div>
+                    <div class="nav-links">
+                        <a href="#">Home</a>
+                        <a href="#" class="active">About</a>
+                        <a href="#">Portfolio</a>
+                        <a href="#">Resume</a>
+                        <a href="#">Skills</a>
+                        <a href="#">Contact</a>
+                    </div>
+                    <div class="search-box">🔍 Search</div>
+                </div>
+                
+                <div class="section-title-wire">About Me</div>
+                
+                <div class="two-columns">
+                    <div class="column-wire" style="text-align: center;">
+                        <div style="width: 150px; height: 150px; background: #ddd; border-radius: 20px; margin: 0 auto; display: flex; align-items: center; justify-content: center;">🖼️<br>Photo</div>
+                        <div style="margin-top: 10px; font-size: 0.8rem;">Hodan Mohamed</div>
+                    </div>
+                    <div class="column-wire">
+                        <p><strong>I am Hodan, student in second year of computer engineering.</strong></p>
+                        <p>I am passionate about technology and currently developing my skills in computer science.</p>
+                        <p>Welcome to my portfolio where I share my academic projects.</p>
+                        <div style="margin-top: 15px;"><span style="border: 1px solid #b46f3c; padding: 6px 20px; border-radius: 40px; font-size:0.8rem;">📄 View my CV</span></div>
+                    </div>
+                </div>
+                
+                <!-- Counters -->
+                <div class="stats-grid">
+                    <div class="stat-wire"><div class="stat-number">5</div><div>Projects Completed</div></div>
+                    <div class="stat-wire"><div class="stat-number">10</div><div>Technical Skills</div></div>
+                    <div class="stat-wire"><div class="stat-number">4</div><div>Languages</div></div>
+                    <div class="stat-wire"><div class="stat-number">2</div><div>Years Experience</div></div>
+                </div>
+                
+                <!-- Key Skills Cards -->
+                <div class="cards-grid">
+                    <div class="card-wire"><div class="card-icon">💻</div><div class="card-title">Web Development</div><div class="card-desc">HTML, CSS, JS, Bootstrap, Node.js</div></div>
+                    <div class="card-wire"><div class="card-icon">🗄️</div><div class="card-title">Programming</div><div class="card-desc">Python, C, C++, OOP</div></div>
+                    <div class="card-wire"><div class="card-icon">🎨</div><div class="card-title">UI/UX Design</div><div class="card-desc">Creative design, Responsive interfaces</div></div>
+                </div>
+                
+                <div class="footer-wire">© 2026 PortFolio — Hodan Mohamed | Computer Engineering & Creativity</div>
+            </div>
+        </div>
+        
+        <!-- ============================================ -->
+        <!-- PAGE PORTFOLIO (portfolio.html) -->
+        <!-- ============================================ -->
+        <div class="page">
+            <div class="page-header">
+                <span>📄 PAGE 3</span>
+                <span>📁 PORTFOLIO (portfolio.html)</span>
+            </div>
+            <div class="page-content">
+                <div class="wireframe-nav">
+                    <div class="logo">PORTFolio<span>.</span></div>
+                    <div class="nav-links">
+                        <a href="#">Home</a>
+                        <a href="#">About</a>
+                        <a href="#" class="active">Portfolio</a>
+                        <a href="#">Resume</a>
+                        <a href="#">Skills</a>
+                        <a href="#">Contact</a>
+                    </div>
+                    <div class="search-box">🔍 Search</div>
+                </div>
+                
+                <div class="section-title-wire">My Projects</div>
+                <div style="text-align: center; color: #888; margin-bottom: 25px;">Coming soon — projects will be added here.</div>
+                
+                <div class="cards-grid">
+                    <div class="card-wire"><div class="card-icon">🎮</div><div class="card-title">Glino Game</div><div class="card-desc">C++ game built with OOP — multiple classes with .hpp/.cpp files</div><div style="margin-top: 8px;"><span style="font-size:0.7rem;color:#b46f3c;">🔗 View on GitHub</span></div></div>
+                    <div class="card-wire"><div class="card-icon">👥</div><div class="card-title">Student Service Desk</div><div class="card-desc">Python app to manage student records — OOP, JSON, unit tests</div><div style="margin-top: 8px;"><span style="font-size:0.7rem;color:#b46f3c;">🔗 View on GitHub</span></div></div>
+                    <div class="card-wire"><div class="card-icon">➕</div><div class="card-title">Project Coming Soon</div><div class="card-desc">More projects will be added here</div></div>
+                </div>
+                
+                <div class="footer-wire">© 2026 PortFolio — Hodan Mohamed | Computer Engineering & Creativity</div>
+            </div>
+        </div>
+        
+        <!-- ============================================ -->
+        <!-- PAGE RESUME (resume.html) -->
+        <!-- ============================================ -->
+        <div class="page">
+            <div class="page-header">
+                <span>📄 PAGE 4</span>
+                <span>📄 RESUME (resume.html)</span>
+            </div>
+            <div class="page-content">
+                <div class="wireframe-nav">
+                    <div class="logo">PORTFolio<span>.</span></div>
+                    <div class="nav-links">
+                        <a href="#">Home</a>
+                        <a href="#">About</a>
+                        <a href="#">Portfolio</a>
+                        <a href="#" class="active">Resume</a>
+                        <a href="#">Skills</a>
+                        <a href="#">Contact</a>
+                    </div>
+                    <div class="search-box">🔍 Search</div>
+                </div>
+                
+                <div class="section-title-wire">My Resume</div>
+                
+                <div class="two-columns">
+                    <div class="column-wire">
+                        <div class="column-title">🎓 Education</div>
+                        <ul class="list-wire">
+                            <li><strong>2025 – present</strong><br>Computer Engineering, 2nd year</li>
+                            <li><strong>2024 – 2025</strong><br>Computer Engineering, 1st year</li>
+                            <li><strong>2023 – 2024</strong><br>Bachelor's degree in Science</li>
+                            <li><strong>2022 – 2023</strong><br>Baccalaureate</li>
+                        </ul>
+                    </div>
+                    <div class="column-wire">
+                        <div class="column-title">💼 Projects & Experience</div>
+                        <ul class="list-wire">
+                            <li><strong>2025 – Personal Portfolio Website</strong><br>Responsive multi-page portfolio</li>
+                            <li><strong>2024 – Computer Science Chapter Project</strong><br>Complete academic deliverable</li>
+                            <li><strong>2024 – Web & Mobile TP Project</strong><br>Personal portfolio site</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="two-columns">
+                    <div class="column-wire">
+                        <div class="column-title">💻 Technical Skills</div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;">
+                            <span style="background:#eee; padding:4px 12px; border-radius:20px; font-size:0.75rem;">HTML/CSS</span>
+                            <span style="background:#eee; padding:4px 12px; border-radius:20px; font-size:0.75rem;">JavaScript</span>
+                            <span style="background:#eee; padding:4px 12px; border-radius:20px; font-size:0.75rem;">Python</span>
+                            <span style="background:#eee; padding:4px 12px; border-radius:20px; font-size:0.75rem;">C/C++</span>
+                            <span style="background:#eee; padding:4px 12px; border-radius:20px; font-size:0.75rem;">Node.js</span>
+                            <span style="background:#eee; padding:4px 12px; border-radius:20px; font-size:0.75rem;">Git/GitHub</span>
+                        </div>
+                    </div>
+                    <div class="column-wire">
+                        <div class="column-title">🗣️ Languages & Interests</div>
+                        <ul class="list-wire">
+                            <li>French: Native</li>
+                            <li>English: Intermediate</li>
+                            <li>Arabic: Native</li>
+                            <li>Somali: Native</li>
+                        </ul>
+                        <div style="margin-top: 15px;"><strong>❤️ Interests:</strong> Web development, UI/UX design, creative coding</div>
+                    </div>
+                </div>
+                
+                <div class="footer-wire">© 2026 Hodan Mohamed | Computer Engineering Student</div>
+            </div>
+        </div>
+        
+        <!-- ============================================ -->
+        <!-- PAGE SKILLS (skills.html) -->
+        <!-- ============================================ -->
+        <div class="page">
+            <div class="page-header">
+                <span>📄 PAGE 5</span>
+                <span>⚡ SKILLS (skills.html)</span>
+            </div>
+            <div class="page-content">
+                <div class="wireframe-nav">
+                    <div class="logo">MyFolio<span>.</span></div>
+                    <div class="nav-links">
+                        <a href="#">Home</a>
+                        <a href="#">About</a>
+                        <a href="#">Portfolio</a>
+                        <a href="#">Resume</a>
+                        <a href="#" class="active">Skills</a>
+                        <a href="#">Contact</a>
+                    </div>
+                    <div class="search-box">🔍 Search</div>
+                </div>
+                
+                <div class="section-title-wire">My Skills</div>
+                <div style="text-align: center; color: #888; margin-bottom: 30px;">Here are some skills that I learned in computer science</div>
+                
+                <div class="cards-grid">
+                    <div class="card-wire">
+                        <div class="card-icon">💻</div>
+                        <div class="card-title">Programming
