@@ -1,18 +1,16 @@
-// chatbot.js - English chatbot for portfolio
-
 const chatbotData = {
     // Personal information
     name: "Hodan Mohamed",
     title: "2nd year Computer Engineering student",
     location: "Djibouti",
     email: "hodan.mohamed@univ.edu.dj",
-    phone: "+253 77 73 15 5",
+    phone: "+253 77 73 15 55",
     
     // Education
     education: [
         "2025 - present: 2nd year Computer Engineering - Faculty of Engineering, Djibouti",
         "2024 - 2025: 1st year Computer Engineering - Faculty of Engineering, Djibouti",
-        "2023 - 2024: Bachelor's degree in Science - University of Djibouti",
+        "2023 - 2024: Bachelor's degree in Science" ,
         "2022 - 2023: Baccalaureate - Djibouti"
     ],
     
@@ -96,7 +94,7 @@ class PortfolioChatbot {
         this.container.className = 'chatbot-container';
         this.container.innerHTML = `
             <div class="chatbot-header">
-                <h3><i class="bi bi-robot"></i> Ask me!</h3>
+                <h3><i class="bi bi-robot"></i> Chatbot!</h3>
                 <button class="close-chatbot"><i class="bi bi-x-lg"></i></button>
             </div>
             <div class="chatbot-messages"></div>
